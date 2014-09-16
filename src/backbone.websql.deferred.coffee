@@ -79,7 +79,7 @@
         params.push model.attributes[if _.isString col then col else col.name]
 
       orReplace = if Backbone.WebSQL.insertOrReplace then "OR REPLACE" else ""
-      @_executeSql "INSERT #{orReplace} INTO `#{@tableName}`(#{colNames.join(",")}) VALUES (#{placeholders.join(",")});", params
+      @_executeSql "INSERT #{orReplace} INTO `#{@tableName}`(#{colNames.join(",")}) VALUES (#{placeholders.join(",")});", params, doneCallback, failCallback
 
     find: (model, doneCallback, failCallback, options) ->
       params = []

@@ -79,7 +79,7 @@
           params.push(model.attributes[_.isString(col) ? col : col.name]);
         }
         orReplace = Backbone.WebSQL.insertOrReplace ? "OR REPLACE" : "";
-        return this._executeSql("INSERT " + orReplace + " INTO `" + this.tableName + "`(" + (colNames.join(",")) + ") VALUES (" + (placeholders.join(",")) + ");", params);
+        return this._executeSql("INSERT " + orReplace + " INTO `" + this.tableName + "`(" + (colNames.join(",")) + ") VALUES (" + (placeholders.join(",")) + ");", params, doneCallback, failCallback);
       },
       find: function(model, doneCallback, failCallback, options) {
         var params, sql;
